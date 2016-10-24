@@ -55,27 +55,21 @@ def stopMovement():
         GPIO.output(Motor2A, GPIO.LOW)
         GPIO.output(Motor2B, GPIO.LOW)
 
-moveForward()
-sleep(1)
-stopMovement()
-sleep(1)
+def getChar():
+	inputChar = raw_input("Enter character: ")
+	while (inputChar != 'q'):
+		stopMovement()
+		if inputChar == 'w':
+			moveForward()
+		if inputChar == 's':
+			moveBackward()
+		if inputChar == 'a':
+			moveLeft()
+		if inputChar == 'd':
+			moveRight()
+	return
 
-moveBackward()
-sleep(1)
-stopMovement()
-sleep(1)
-
-moveLeft()
-sleep(1)
-stopMovement()
-sleep(1)
-
-moveRight()
-sleep(1)
-stopMovement()
-sleep(1)
-
-stopMovement()
+getChar()
 
 print "Stopping motor"
 GPIO.cleanup()
