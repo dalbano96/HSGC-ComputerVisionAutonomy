@@ -1,9 +1,7 @@
-
 import RPi.GPIO as GPIO
 from time import sleep
 
 GPIO.setmode(GPIO.BOARD)
-GPIO.setwarnings(False)
 
 # Assign pins to motor controller
 Motor1A = 13
@@ -24,59 +22,60 @@ GPIO.setup(Motor2B, GPIO.OUT)
 
 def moveForward():
 	print "Moving forward"
-	GPIO.output(Motor1A, HIGH)
-	GPIO.output(Motor1B, LOW)
-	GPIO.output(Motor2A, HIGH)
-	GPIO.output(Motor2B, LOW)
-	return
+	GPIO.output(Motor1A, GPIO.HIGH)
+	GPIO.output(Motor1B, GPIO.LOW)
+	GPIO.output(Motor2A, GPIO.HIGH)
+	GPIO.output(Motor2B, GPIO.LOW)
 
 def moveBackward():
 	print "Moving backward"
-	GPIO.output(Motor1A, LOW)
-        GPIO.output(Motor1B, HIGH)
-        GPIO.output(Motor2A, LOW)
-        GPIO.output(Motor2B, HIGH)
-	return
+	GPIO.output(Motor1A, GPIO.LOW)
+        GPIO.output(Motor1B, GPIO.HIGH)
+        GPIO.output(Motor2A, GPIO.LOW)
+        GPIO.output(Motor2B, GPIO.HIGH)
 
 def moveLeft():
 	print "Moving left"
-	GPIO.output(Motor1A, HIGH)
-        GPIO.output(Motor1B, LOW)
-        GPIO.output(Motor2A, LOW)
-        GPIO.output(Motor2B, HIGH)
-	return
+	GPIO.output(Motor1A, GPIO.HIGH)
+        GPIO.output(Motor1B, GPIO.LOW)
+        GPIO.output(Motor2A, GPIO.LOW)
+        GPIO.output(Motor2B, GPIO.HIGH)
 
 def moveRight():
 	print "Moving right"
-	GPIO.output(Motor1A, LOW)
-        GPIO.output(Motor1B, HIGH)
-        GPIO.output(Motor2A, HIGH)
-        GPIO.output(Motor2B, LOW)
-	return
+	GPIO.output(Motor1A, GPIO.LOW)
+        GPIO.output(Motor1B, GPIO.HIGH)
+        GPIO.output(Motor2A, GPIO.HIGH)
+        GPIO.output(Motor2B, GPIO.LOW)
 
 def stopMovement():
 	print "Movement stopped"
-	GPIO.output(Motor1A, LOW)
-        GPIO.output(Motor1B, LOW)
-        GPIO.output(Motor2A, LOW)
-        GPIO.output(Motor2B, LOW)
-	return
+	GPIO.output(Motor1A, GPIO.LOW)
+        GPIO.output(Motor1B, GPIO.LOW)
+        GPIO.output(Motor2A, GPIO.LOW)
+        GPIO.output(Motor2B, GPIO.LOW)
 
-def getChar():
-	inputChar = raw_input("Enter character: ")
-	while (inputChar != 'q'): 
-		if inputChar == 'w':
-			moveForward()		
-		if inputChar == 's':
-			moveBackward()
-		if inputChar == 'a':
-			moveLeft()
-		if inputChar == 'd':
-			moveRight()
-		inputChar = raw_input("Enter character: ")
-	return
+moveForward()
+sleep(1)
+stopMovement()
+sleep(1)
 
-getChar()
+moveBackward()
+sleep(1)
+stopMovement()
+sleep(1)
+
+moveLeft()
+sleep(1)
+stopMovement()
+sleep(1)
+
+moveRight()
+sleep(1)
+stopMovement()
+sleep(1)
+
+stopMovement()
 
 print "Stopping motor"
 GPIO.cleanup()
