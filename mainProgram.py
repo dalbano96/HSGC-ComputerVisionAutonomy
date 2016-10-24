@@ -1,4 +1,5 @@
 import RPi.GPIO as GPIO
+import cv2 as cv
 from time import sleep
 
 GPIO.setmode(GPIO.BOARD)
@@ -58,7 +59,6 @@ def stopMovement():
 def getChar():
 	inputChar = raw_input("Enter character: ")
 	while (inputChar != 'q'):
-		stopMovement()
 		if inputChar == 'w':
 			moveForward()
 		if inputChar == 's':
@@ -67,6 +67,9 @@ def getChar():
 			moveLeft()
 		if inputChar == 'd':
 			moveRight()
+		if inputChar == 'x':
+			stopMovement()
+		inputChar = raw_input("Enter character: ")
 	return
 
 getChar()
