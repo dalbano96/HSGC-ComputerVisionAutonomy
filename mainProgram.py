@@ -23,6 +23,7 @@ GPIO.setup(Motor2B, GPIO.OUT)
 
 def moveForward():
 	print "Moving forward"
+	stopMovement()
 	GPIO.output(Motor1A, GPIO.HIGH)
 	GPIO.output(Motor1B, GPIO.LOW)
 	GPIO.output(Motor2A, GPIO.HIGH)
@@ -30,6 +31,7 @@ def moveForward():
 
 def moveBackward():
 	print "Moving backward"
+	stopMovement()
 	GPIO.output(Motor1A, GPIO.LOW)
         GPIO.output(Motor1B, GPIO.HIGH)
         GPIO.output(Motor2A, GPIO.LOW)
@@ -37,6 +39,7 @@ def moveBackward():
 
 def moveLeft():
 	print "Moving left"
+	stopMovement()
 	GPIO.output(Motor1A, GPIO.HIGH)
         GPIO.output(Motor1B, GPIO.LOW)
         GPIO.output(Motor2A, GPIO.LOW)
@@ -44,6 +47,7 @@ def moveLeft():
 
 def moveRight():
 	print "Moving right"
+	stopMovement()
 	GPIO.output(Motor1A, GPIO.LOW)
         GPIO.output(Motor1B, GPIO.HIGH)
         GPIO.output(Motor2A, GPIO.HIGH)
@@ -55,6 +59,7 @@ def stopMovement():
         GPIO.output(Motor1B, GPIO.LOW)
         GPIO.output(Motor2A, GPIO.LOW)
         GPIO.output(Motor2B, GPIO.LOW)
+	sleep(0.1)
 
 def getChar():
 	inputChar = raw_input("Enter character: ")
